@@ -12,6 +12,7 @@ import java.util.*;
 
 public class Deck {
     ArrayList <Card> a = new ArrayList<Card>();
+    ArrayList <Card> hand = new ArrayList<Card>();
     private Card card = new Card();
     /*public String printAllCard(){
         for (int i=0; i<4; i++)
@@ -56,7 +57,12 @@ public class Deck {
     public void shuffle(){
         Collections.shuffle(this.a);
     }
-    
+    public ArrayList <Card> makeHand(){
+        for (int i = 0; i<8;i++){
+            hand.add(a.get(0));
+        }
+        return hand;
+    }
     public Card getCard(){
         Card c1 = new Card();
         c1 = a.get(0);

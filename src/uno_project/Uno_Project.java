@@ -16,12 +16,7 @@ public class Uno_Project {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Deck d = new Deck(); 
-        //d.shuffle();
-        d.printAllCards();
-        System.out.println("-----------------------------------");
-        //d.sort();
-        //d.printAllCards();
+        Game g = new Game(3);
     }
     
 }
