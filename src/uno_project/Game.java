@@ -27,6 +27,9 @@ public class Game {
     Boolean reversed = false;
     Boolean skipNext = false;
 
+    //CONSTANTS
+    int MAX_NUM_PLAYERS =4;
+    int MIN_NUM_PLAYERS =3;
     public Game(int pNum) {
         Deck d = new Deck();
         d.shuffle();
@@ -37,7 +40,7 @@ public class Game {
 
     public void genPlayers(int numPlayers) {
         this.numberOfPlayers = numPlayers;
-        if (numPlayers > 1 || numPlayers < 11) {
+        if (numPlayers > MIN_NUM_PLAYERS || numPlayers < MAX_NUM_PLAYERS) {
             for (int i = 0; i <= numPlayers; i++) {
                 p = new Player(d.makeHand(), i); //player numbers start at 0, player 0 is always human
                 playerGroup.add(p);
