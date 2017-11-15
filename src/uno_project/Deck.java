@@ -21,7 +21,7 @@ public class Deck {
             
     }*/
     public Deck() {
-        this.makeDeck();
+        
     }
 
     public void makeDeck() {
@@ -65,6 +65,10 @@ public class Deck {
             hand.add(a.get(0));
         }
         return hand;
+    }
+    
+    public void addCard(Card c){
+        a.add(c);
     }
     
     public void shuffle() {
