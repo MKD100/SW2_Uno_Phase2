@@ -52,6 +52,10 @@ public class Game {
 
     }
 
+    public void setHumanName(String hPlayerName){
+        this.playerGroup.get(0).addPlayerName(hPlayerName);
+    }
+    
     public void nextPlayer() {
         int nextPlayerPID;
 
