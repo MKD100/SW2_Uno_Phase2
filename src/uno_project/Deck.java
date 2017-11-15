@@ -94,4 +94,15 @@ public class Deck {
     public void sort() {
         Collections.sort(this.a);
     }
+    public Boolean isEmpty(){
+        if(a.size() <1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public int getSize(){
+        
+        return a.size();
+    }
 }

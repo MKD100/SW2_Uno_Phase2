@@ -148,5 +148,10 @@ public class Game {
                 }
             }
         }
+        if(d.isEmpty()){
+            for(int i =0; i<discard.getSize();i++){
+                d.addCard(discard.getCard());
+            }
+        }
     }
 }
