@@ -16,6 +16,7 @@ public class Uno_Project {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
         new gui().setVisible(true);
     }
 

@@ -16,6 +16,7 @@ public class Player {
     ArrayList<Card> hand = new ArrayList<Card>();
     //player id to identify multiple players
     int pID = 0;
+    int numCards=0;
     String playerName;
     Boolean atUno = false;
 
@@ -35,10 +36,26 @@ public class Player {
         return this.pID;
     }
 
+    public ArrayList handCardNames(){
+            ArrayList<String> cardNames = new ArrayList<String>();
+        for(int i=0; i< this.getHandSize(); i++){
+            cardNames.add(this.hand.get(i).toString());
+        }
+       
+        return cardNames;
+        
+    }
+    public int getHandSize(){
+        return this.hand.size();
+    }
+    
     public void drawCard(Card c) {
         this.hand.add(c);
+        this.numCards++;
     }
-
+    public int size(){
+        return this.numCards;
+    }
     public Card discard(int whichCard) {
         Card dCard = hand.get(whichCard);
         if (this.hand.size() == 1) {

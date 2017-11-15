@@ -15,10 +15,16 @@ public class gui extends javax.swing.JFrame {
      * Creates new form gui
      */
     
+    Game g = new Game();
+    int numOfPlayers = 0;
+    int difficulty;
+    String playerName;
     public gui() {
         initComponents();
     }
-
+    public int getNumOfPlayers(){
+        return this.numOfPlayers;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,184 +36,182 @@ public class gui extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        nextButton = new javax.swing.JButton();
-        exitButton = new javax.swing.JButton();
-        helpButton = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         numPlayersLable = new javax.swing.JLabel();
-        diffcultyLable = new javax.swing.JLabel();
-        difficultyDropDown = new javax.swing.JComboBox<>();
-        textFieldUserName = new javax.swing.JTextField();
+        difficultyLevelLable = new javax.swing.JLabel();
+        numPlayersComboBox = new javax.swing.JComboBox<>();
+        difficultyComboBox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        nameInput = new javax.swing.JTextField();
+        infoIcon = new javax.swing.JLabel();
+        startButton = new javax.swing.JButton();
+        exitButtonMainMenu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(190, 0, 0));
-        jLabel2.setText("Choose");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/uno-online.png"))); // NOI18N
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/play-button.png"))); // NOI18N
-        jButton1.setText("NEXT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextButtonActionPerformed(evt);
-            }
-        });
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/exit.png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonActionPerformed(evt);
-            }
-        });
-
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/information.png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpButtonActionPerformed(evt);
-            }
-        });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/uno-online.png"))); // NOI18N
+        jLabel1.setAlignmentY(0.75F);
 
         numPlayersLable.setForeground(new java.awt.Color(255, 255, 255));
-        numPlayersLable.setText("Select Number of Players");
-        numPlayersLable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 204), new java.awt.Color(255, 255, 204), new java.awt.Color(255, 255, 204), new java.awt.Color(255, 255, 204)));
+        numPlayersLable.setText("Select Number of Players:");
 
-        diffcultyLable.setBackground(new java.awt.Color(255, 255, 255));
-        diffcultyLable.setForeground(new java.awt.Color(255, 255, 255));
-        diffcultyLable.setText("Select Computer Difficulty");
-        diffcultyLable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        difficultyLevelLable.setForeground(new java.awt.Color(255, 255, 255));
+        difficultyLevelLable.setText("Select Difficulty Level: ");
 
-        difficultyDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Easy", "Hard" }));
-
-        textFieldUserName.addActionListener(new java.awt.event.ActionListener() {
+        numPlayersComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2 Player", "3 Player", "4 Player" }));
+        numPlayersComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldUserNameActionPerformed(evt);
+                numPlayersComboBoxActionPerformed(evt);
+            }
+        });
+
+        difficultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Easy ", "Intermediate", "Hard" }));
+        difficultyComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                difficultyComboBoxActionPerformed(evt);
             }
         });
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Enter Your Name: ");
+        jLabel2.setText("Your Name Here: ");
+
+        infoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/button_Images/information.png"))); // NOI18N
+        infoIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                infoIconMouseClicked(evt);
+            }
+        });
+
+        startButton.setText("Start Game!");
+        startButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButtonActionPerformed(evt);
+            }
+        });
+
+        exitButtonMainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/button_Images/exit.png"))); // NOI18N
+        exitButtonMainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitButtonMainMenuMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(221, 221, 221)
-                .addComponent(nextButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(69, 69, 69)
+                        .addGap(0, 287, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(153, 153, 153)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel3))
-                                .addGap(0, 142, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-
-                        .addGap(0, 195, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(204, 204, 204)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(185, 185, 185))
-
+                                            .addComponent(difficultyLevelLable)
+                                            .addComponent(numPlayersLable))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(difficultyComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(numPlayersComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(nameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(30, 30, 30)))
+                                .addGap(286, 286, 286))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(startButton)
+                                .addGap(356, 356, 356))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(infoIcon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitButtonMainMenu)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(infoIcon)
+                    .addComponent(exitButtonMainMenu))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addGap(51, 51, 51)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numPlayersComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numPlayersLable))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(difficultyLevelLable)
+                    .addComponent(difficultyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(40, 40, 40))
-
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(nameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addComponent(startButton)
+                .addGap(194, 194, 194))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        new GameBoard().setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_nextButtonActionPerformed
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+        // TODO add your handling code here:
+                
+        numOfPlayers=numPlayersComboBox.getSelectedIndex();
+        this.numOfPlayers= numOfPlayers+2;
+        //g.initializeGame(numOfPlayers);
+        playerName= nameInput.getText();
+        if(playerName.isEmpty()){
+            playerName="Mr. No Name";
+        }
+        GameBoard gb = new GameBoard();
+        gb.setNumPlayer(this.numOfPlayers);
+        gb.setName(this.playerName);
+        
+        gb.setVisible(true);
+        setVisible(false);        
+    }//GEN-LAST:event_startButtonActionPerformed
 
-    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
+    private void numPlayersComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numPlayersComboBoxActionPerformed
+        // TODO add your handling code here:
+
+        
+    }//GEN-LAST:event_numPlayersComboBoxActionPerformed
+
+    private void difficultyComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difficultyComboBoxActionPerformed
+        // TODO add your handling code here:
+        difficulty=0;
+    }//GEN-LAST:event_difficultyComboBoxActionPerformed
+
+    private void infoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoIconMouseClicked
         // TODO add your handling code here:
         new Help().setVisible(true);
-    }//GEN-LAST:event_helpButtonActionPerformed
+    }//GEN-LAST:event_infoIconMouseClicked
 
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+    private void exitButtonMainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMainMenuMouseClicked
         // TODO add your handling code here:
-
         System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void textFieldUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldUserNameActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_textFieldUserNameActionPerformed
+    }//GEN-LAST:event_exitButtonMainMenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -245,16 +249,16 @@ public class gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel diffcultyLable;
-    private javax.swing.JComboBox<String> difficultyDropDown;
-    private javax.swing.JButton exitButton;
-    private javax.swing.JButton helpButton;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> difficultyComboBox;
+    private javax.swing.JLabel difficultyLevelLable;
+    private javax.swing.JLabel exitButtonMainMenu;
+    private javax.swing.JLabel infoIcon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton nextButton;
+    private javax.swing.JTextField nameInput;
+    private javax.swing.JComboBox<String> numPlayersComboBox;
     private javax.swing.JLabel numPlayersLable;
-    private javax.swing.JTextField textFieldUserName;
+    private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
 }

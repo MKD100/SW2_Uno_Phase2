@@ -15,11 +15,11 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    Deck d;
+    Deck d = new Deck();
     Deck discard;
     Card topCard;
     int cardColor;//"Red", "Yellow", "Blue", "Green", "Wild"
-    int numberOfPlayers;
+    int numberOfPlayers=0;
     int currentPlayer = 0;
     ArrayList<Player> playerGroup = new ArrayList<Player>();
     Player p;
@@ -29,21 +29,30 @@ public class Game {
     
     //CONSTANTS
     int MAX_NUM_PLAYERS =4;
-    int MIN_NUM_PLAYERS =3;
-    public Game(int pNum) {
-        Deck d = new Deck();
-        d.makeDeck();
-        d.shuffle();
+    int MIN_NUM_PLAYERS =2;
+    
+    public Game(){
+        
+    }
+    public String getTopCard(){
+        return this.topCard.toString();
+    }
+    public void initializeGame(int pNum) {
+        
+        this.d.makeDeck();
+        this.d.shuffle();
         //this creates the number of players and gives each of them a hand
         genPlayers(pNum);
-        topCard = d.getCard();
+        this.topCard = this.d.getCard();
     }
 
     public void genPlayers(int numPlayers) {
         this.numberOfPlayers = numPlayers;
-        if (numPlayers > MIN_NUM_PLAYERS || numPlayers < MAX_NUM_PLAYERS) {
-            for (int i = 0; i <= numPlayers; i++) {
-                p = new Player(d.makeHand(), i); //player numbers start at 0, player 0 is always human
+        if (numPlayers >= MIN_NUM_PLAYERS || numPlayers <= MAX_NUM_PLAYERS) {
+            for (int i = 0; i < numPlayers; i++) {
+                ArrayList<Card> tempHand = new ArrayList<Card>();
+                tempHand.addAll(d.makeHand());
+                p = new Player(tempHand, i); //player numbers start at 0, player 0 is always human
                 playerGroup.add(p);
             }
         } else {
@@ -51,6 +60,12 @@ public class Game {
         }
     }
 
+    public ArrayList playerHand(Player p){
+        return p.handCardNames();
+    }
+    public int getPlayerHandSize(int index){
+        return this.playerGroup.get(index).getHandSize();
+    }
     public void setHumanName(String hPlayerName){
         this.playerGroup.get(0).addPlayerName(hPlayerName);
     }
@@ -115,6 +130,13 @@ public class Game {
     }
 
     //this is what determines if a discard is valid and what actions should be taken
+
+    public void draw() {
+        
+            playerGroup.get(currentPlayer).drawCard(d.getCard());
+        
+    }
+    
     public void draw2() {
         for (int i = 0; i < 3; i++) {
             playerGroup.get(currentPlayer).drawCard(d.getCard());
