@@ -49,9 +49,12 @@ public class Game {
         } else {
             System.out.println("too many or too few players");
         }
-
     }
 
+    public void setHumanName(String hPlayerName){
+        this.playerGroup.get(0).addPlayerName(hPlayerName);
+    }
+    
     public void nextPlayer() {
         int nextPlayerPID;
 
@@ -146,6 +149,11 @@ public class Game {
 
                     }
                 }
+            }
+        }
+        if(d.isEmpty()){
+            for(int i =0; i<discard.getSize();i++){
+                d.addCard(discard.getCard());
             }
         }
     }
