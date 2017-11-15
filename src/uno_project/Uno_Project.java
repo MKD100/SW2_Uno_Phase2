@@ -18,5 +18,5 @@ public class Uno_Project {
         // TODO code application logic here
         Game g = new Game(3);
     }
-    
+
 }
