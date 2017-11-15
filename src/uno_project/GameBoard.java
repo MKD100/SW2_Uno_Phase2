@@ -29,7 +29,7 @@ public class GameBoard extends javax.swing.JFrame {
     Boolean gameStarted = false;
     public GameBoard() {
         initComponents();
-  
+        selectButton.setVisible(false);
 
     }
     
@@ -44,11 +44,11 @@ public class GameBoard extends javax.swing.JFrame {
     private void initGameBoard(){
         if(numPlay==2){
             //TWO PLAYER
-            for(int i = 0; i<g.getPlayerHandSize(0);i++){          
+            for(int i = 0; i<g.getPlayerHandSize(0);i++){
                 JLabel tempLableIcon = new JLabel();
                 tempLableIcon.setIcon(new ImageIcon(getClass().getResource("/uno_project/images/card_Images/"+g.playerHand(g.playerGroup.get(0)).get(i).toString()+" copy.png")));
                 tempLableIcon.setVisible(true);
-                //tempLableIcon.setHorizontalAlignment(i+100);
+                selector.addItem(g.playerHand(g.playerGroup.get(0)).get(i).toString());
                 userLP1.add(tempLableIcon,i,0);
             }
             for(int i = 0; i<g.getPlayerHandSize(1);i++){          
@@ -63,11 +63,11 @@ public class GameBoard extends javax.swing.JFrame {
             p4Name_Lable.setText("");
         }else if(numPlay==3){
             //THREE PLAYER
-            for(int i = 0; i<g.getPlayerHandSize(0);i++){          
+            for(int i = 0; i<g.getPlayerHandSize(0);i++){
                 JLabel tempLableIcon = new JLabel();
                 tempLableIcon.setIcon(new ImageIcon(getClass().getResource("/uno_project/images/card_Images/"+g.playerHand(g.playerGroup.get(0)).get(i).toString()+" copy.png")));
                 tempLableIcon.setVisible(true);
-                //tempLableIcon.setHorizontalAlignment(i+100);
+                selector.addItem(g.playerHand(g.playerGroup.get(0)).get(i).toString());
                 userLP1.add(tempLableIcon,i,0);
             }
             for(int i = 0; i<g.getPlayerHandSize(1);i++){          
@@ -93,9 +93,10 @@ public class GameBoard extends javax.swing.JFrame {
                 JLabel tempLableIcon = new JLabel();
                 tempLableIcon.setIcon(new ImageIcon(getClass().getResource("/uno_project/images/card_Images/"+g.playerHand(g.playerGroup.get(0)).get(i).toString()+" copy.png")));
                 tempLableIcon.setVisible(true);
-                //tempLableIcon.addMouseListener(l);
+                selector.addItem(g.playerHand(g.playerGroup.get(0)).get(i).toString());
                 userLP1.add(tempLableIcon,i,0);
             }
+            
             for(int i = 0; i<g.getPlayerHandSize(1);i++){          
                 JLabel tempLableIcon = new JLabel();
                 tempLableIcon.setIcon(new ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardRight copy.png")));
@@ -146,6 +147,8 @@ public class GameBoard extends javax.swing.JFrame {
         p3Name_Lable = new javax.swing.JLabel();
         p4Name_Lable = new javax.swing.JLabel();
         deck = new javax.swing.JButton();
+        selector = new javax.swing.JComboBox<>();
+        Start = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -183,27 +186,21 @@ public class GameBoard extends javax.swing.JFrame {
             }
         });
 
-        LP3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         LP3.setPreferredSize(new java.awt.Dimension(650, 110));
-        LP3.setLayout(new java.awt.GridLayout());
+        LP3.setLayout(new java.awt.GridLayout(1, 0));
 
-        userLP1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         userLP1.setPreferredSize(new java.awt.Dimension(650, 110));
-        userLP1.setLayout(new java.awt.GridLayout());
+        userLP1.setLayout(new java.awt.GridLayout(1, 0));
 
-        LP2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         LP2.setPreferredSize(new java.awt.Dimension(650, 110));
         LP2.setLayout(new java.awt.GridLayout(0, 1));
 
-        LP4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         LP4.setPreferredSize(new java.awt.Dimension(650, 110));
         LP4.setLayout(new java.awt.GridLayout(0, 1));
 
         playerNameLable.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         playerNameLable.setForeground(new java.awt.Color(255, 255, 255));
         playerNameLable.setText("Player 1: ");
-
-        p4Name_Lable.setText("jLabel3");
 
         deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
         deck.setToolTipText("");
@@ -212,6 +209,20 @@ public class GameBoard extends javax.swing.JFrame {
         deck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deckActionPerformed(evt);
+            }
+        });
+
+        selector.setMaximumRowCount(15);
+        selector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectorActionPerformed(evt);
+            }
+        });
+
+        Start.setText("Start");
+        Start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartActionPerformed(evt);
             }
         });
 
@@ -233,7 +244,9 @@ public class GameBoard extends javax.swing.JFrame {
                                 .addComponent(selectButton))
                             .addGroup(rootPanelLayout.createSequentialGroup()
                                 .addGap(425, 425, 425)
-                                .addComponent(userLP1, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(userLP1, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(selector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(rootPanelLayout.createSequentialGroup()
@@ -247,18 +260,24 @@ public class GameBoard extends javax.swing.JFrame {
                         .addComponent(LP2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(rootPanelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(p2Name_Lable)
-                                .addGap(371, 371, 371)
-                                .addComponent(deck)
-                                .addGap(149, 149, 149)
-                                .addComponent(discardCard)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(p4Name_Lable))
+                                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(rootPanelLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(p2Name_Lable)
+                                        .addGap(371, 371, 371)
+                                        .addComponent(deck)
+                                        .addGap(149, 149, 149)
+                                        .addComponent(discardCard)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(p4Name_Lable))
+                                    .addGroup(rootPanelLayout.createSequentialGroup()
+                                        .addGap(581, 581, 581)
+                                        .addComponent(p3Name_Lable)))
+                                .addGap(18, 18, 18))
                             .addGroup(rootPanelLayout.createSequentialGroup()
-                                .addGap(581, 581, 581)
-                                .addComponent(p3Name_Lable)))
-                        .addGap(18, 18, 18))
+                                .addGap(527, 527, 527)
+                                .addComponent(Start)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(rootPanelLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(helpButton)
@@ -274,9 +293,9 @@ public class GameBoard extends javax.swing.JFrame {
                 .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rootPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(exitButton)
-                            .addComponent(unoButton))
+                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(unoButton)
+                            .addComponent(exitButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(LP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(rootPanelLayout.createSequentialGroup()
@@ -291,15 +310,17 @@ public class GameBoard extends javax.swing.JFrame {
                         .addComponent(LP4, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(rootPanelLayout.createSequentialGroup()
                                 .addComponent(p2Name_Lable)
                                 .addGap(222, 222, 222))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, rootPanelLayout.createSequentialGroup()
+                            .addGroup(rootPanelLayout.createSequentialGroup()
                                 .addComponent(p3Name_Lable)
                                 .addGap(236, 236, 236)
                                 .addComponent(p4Name_Lable)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Start)
+                                .addGap(47, 47, 47)))
                         .addComponent(playerNameLable))
                     .addGroup(rootPanelLayout.createSequentialGroup()
                         .addGap(199, 199, 199)
@@ -307,8 +328,13 @@ public class GameBoard extends javax.swing.JFrame {
                             .addComponent(deck)
                             .addComponent(discardCard))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addComponent(userLP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
+                        .addComponent(userLP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
+                        .addComponent(selector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(91, 91, 91)))
                 .addComponent(selectButton)
                 .addGap(50, 50, 50))
         );
@@ -342,14 +368,15 @@ public class GameBoard extends javax.swing.JFrame {
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
         // TODO add your handling code here:
         if(!gameStarted){
-        g.initializeGame(numPlay);
-        discardCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard() + " copy.png")));
-        initGameBoard();
-        playerNameLable.setText("Player 1: "+ this.name);
         gameStarted=true;
+        
+        
+        
+        
         }else{
             selectButton.setText("Select");
-
+            g.playerGroup.get(0).discard(selector.getSelectedIndex());
+            g.remove(0, selector.getSelectedIndex());        
         }
     }//GEN-LAST:event_selectButtonActionPerformed
 
@@ -359,6 +386,24 @@ public class GameBoard extends javax.swing.JFrame {
         userLP1.removeAll();
         initGameBoard();
     }//GEN-LAST:event_deckActionPerformed
+
+    private void selectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorActionPerformed
+        // TODO add your handling code here:
+        //selector.getIn
+        
+    }//GEN-LAST:event_selectorActionPerformed
+
+    private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
+        // TODO add your handling code here:
+        g.initializeGame(numPlay);
+        gameStarted=true;
+        selectButton.setText("Select");
+        discardCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard() + " copy.png")));
+        initGameBoard();
+        playerNameLable.setText("Player 1: "+ this.name);
+        selectButton.setVisible(true);
+        Start.setVisible(false);
+    }//GEN-LAST:event_StartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,6 +444,7 @@ public class GameBoard extends javax.swing.JFrame {
     private javax.swing.JLayeredPane LP2;
     private javax.swing.JLayeredPane LP3;
     private javax.swing.JLayeredPane LP4;
+    private javax.swing.JButton Start;
     private javax.swing.ButtonGroup choice;
     private javax.swing.JButton deck;
     private javax.swing.JLabel discardCard;
@@ -410,6 +456,7 @@ public class GameBoard extends javax.swing.JFrame {
     private javax.swing.JLabel playerNameLable;
     private javax.swing.JPanel rootPanel;
     private javax.swing.JButton selectButton;
+    private javax.swing.JComboBox<String> selector;
     private javax.swing.JButton unoButton;
     private javax.swing.JLayeredPane userLP1;
     // End of variables declaration//GEN-END:variables

@@ -133,7 +133,7 @@ public class Game {
 
     public void draw() {
         
-            playerGroup.get(currentPlayer).drawCard(d.getCard());
+            playerGroup.get(0).drawCard(d.getCard());
         
     }
     
@@ -178,5 +178,9 @@ public class Game {
                 d.addCard(discard.getCard());
             }
         }
+    }
+    public void remove(int i, int j){
+        this.playerGroup.get(i).hand.remove(j);
+        
     }
 }
