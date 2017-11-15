@@ -31,11 +31,11 @@ public class Game {
         Deck d = new Deck();
         d.shuffle();
         //this creates the number of players and gives each of them a hand
-        genPlayer(pNum);
+        genPlayers(pNum);
         topCard = d.getCard();
     }
 
-    public void genPlayer(int numPlayers) {
+    public void genPlayers(int numPlayers) {
         this.numberOfPlayers = numPlayers;
         if (numPlayers > 1 || numPlayers < 11) {
             for (int i = 0; i <= numPlayers; i++) {

@@ -57,7 +57,16 @@ public class Deck {
             }
         }
     }
-
+    
+    public ArrayList makeHand(){
+        ArrayList<Card> hand = new ArrayList<Card>();
+        
+        for(int i=0; i<=7;i++){
+            hand.add(a.get(0));
+        }
+        return hand;
+    }
+    
     public void shuffle() {
         Collections.shuffle(this.a);
     }
