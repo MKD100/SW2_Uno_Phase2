@@ -26,9 +26,13 @@ public class Game {
     Boolean canDiscard = true;
     Boolean reversed = false;
     Boolean skipNext = false;
-
+    
+    //CONSTANTS
+    int MAX_NUM_PLAYERS =4;
+    int MIN_NUM_PLAYERS =3;
     public Game(int pNum) {
         Deck d = new Deck();
+        d.makeDeck();
         d.shuffle();
         //this creates the number of players and gives each of them a hand
         genPlayers(pNum);
@@ -37,7 +41,7 @@ public class Game {
 
     public void genPlayers(int numPlayers) {
         this.numberOfPlayers = numPlayers;
-        if (numPlayers > 1 || numPlayers < 11) {
+        if (numPlayers > MIN_NUM_PLAYERS || numPlayers < MAX_NUM_PLAYERS) {
             for (int i = 0; i <= numPlayers; i++) {
                 p = new Player(d.makeHand(), i); //player numbers start at 0, player 0 is always human
                 playerGroup.add(p);
@@ -48,56 +52,63 @@ public class Game {
 
     }
 
-    public void nextPlayer(int currentPlayer) {
+    public void nextPlayer() {
         int nextPlayerPID;
 
         if (!reversed && !skipNext) {
-            nextPlayerPID = currentPlayer + 1;
+            nextPlayerPID = this.currentPlayer + 1;
         } else if (reversed && !skipNext) {
-            if (currentPlayer == 1) {
-                nextPlayerPID = numberOfPlayers;
+            if (this.currentPlayer == 1) {
+                nextPlayerPID = this.numberOfPlayers;
             } else {
-                nextPlayerPID = currentPlayer - 1;
+                nextPlayerPID = this.currentPlayer - 1;
             }
         } else if (!reversed && skipNext) {
             nextPlayerPID = currentPlayer + 2;
         } else if (reversed && skipNext) {
-            if (currentPlayer == 2) {
-                nextPlayerPID = numberOfPlayers;
+            if (this.currentPlayer == 2) {
+                nextPlayerPID = this.numberOfPlayers;
             } else {
-                nextPlayerPID = currentPlayer - 2;
+                nextPlayerPID = this.currentPlayer - 2;
             }
         } else {
             nextPlayerPID = 0;
         }
 
         this.currentPlayer = nextPlayerPID;
+
     }
 
     //this will control how a player plays their card, if the player is non-human
     //this controls the AI
     public void playHand(Card c) {
         //check if top card allows player to play
-        CheckIntendedDiscard(c);;
+        CheckIntendedDiscard(c);
 
         if (currentPlayer == 0) {//human
+            if(c.getValue()==12){
+                
+            }
             if (this.canDiscard == true) {
-                //discard the selected card
+                discard.addCard(c);
+                this.playerGroup.get(this.currentPlayer).hand.remove(c);
+                this.canDiscard = false;
+                nextPlayer();
             } else {
-
+                //To Do 
+                //add what to do if the card cannot be discarded
             }
 
         } else {//not human
-
+            //Add the AI code for the computer to play its hand
         }
     }
 
-    public void CheckIntendedDiscard(Card c) {
-        if (topCard.getValue() == 12 || topCard.getValue() == 14) {
-            if (c.getValue() != 12 || c.getValue() != 14) {
-                this.canDiscard = false;
-            }
+    public Boolean CheckIntendedDiscard(Card c) {
+        if (this.topCard.getColor() == c.getColor() || this.topCard.getColor() == c.getColor()) {
+            this.canDiscard=true;
         }
+        return canDiscard;
     }
 
     //this is what determines if a discard is valid and what actions should be taken
@@ -120,7 +131,7 @@ public class Game {
                 //card the current player is putting down is NOT a draw 2 or draw4 Wild card
                 //Player draws cards and cannot discard
                 if (c.getValue() == 12 || c.getValue() == 14) {
-                    nextPlayer(currentPlayer);
+                    nextPlayer();
                     if (c.getValue() == 12) {//draw 2
 
                     }

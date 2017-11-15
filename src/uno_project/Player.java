@@ -16,6 +16,7 @@ public class Player {
     ArrayList<Card> hand = new ArrayList<Card>();
     //player id to identify multiple players
     int pID = 0;
+    String playerName;
     Boolean atUno = false;
 
     public Player(ArrayList inHand, int playerNum) {
@@ -23,6 +24,13 @@ public class Player {
         this.pID = playerNum;
     }
 
+    public void addPlayerName(String name){
+        this.playerName=name;
+    }
+    
+    public String getPlayerName(){
+        return this.playerName;
+    }
     public int getPID() {
         return this.pID;
     }
