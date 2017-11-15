@@ -49,10 +49,6 @@ public class Game {
         } else {
             System.out.println("too many or too few players");
         }
-
-        
-        
-        
     }
 
     public void setHumanName(String hPlayerName){
