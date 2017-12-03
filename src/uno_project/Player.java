@@ -36,12 +36,16 @@ public class Player {
         return this.pID;
     }
 
+    public String getCardName ( int cardIndex){
+        String tempCard = hand.get(cardIndex).getImage();
+        return tempCard;
+    }
+    
     public ArrayList handCardNames(){
             ArrayList<String> cardNames = new ArrayList<String>();
         for(int i=0; i< this.getHandSize(); i++){
             cardNames.add(this.hand.get(i).toString());
         }
-       
         return cardNames;
         
     }

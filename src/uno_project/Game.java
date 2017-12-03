@@ -41,15 +41,15 @@ public class Game {
         
         this.d.makeDeck();
         this.d.shuffle();
-        //this creates the number of players and gives each of them a hand
-        genPlayers(pNum);
+        this.numberOfPlayers = pNum;
+//this creates the number of players and gives each of them a hand
+        genPlayers();
         this.topCard = this.d.getCard();
     }
 
-    public void genPlayers(int numPlayers) {
-        this.numberOfPlayers = numPlayers;
-        if (numPlayers >= MIN_NUM_PLAYERS || numPlayers <= MAX_NUM_PLAYERS) {
-            for (int i = 0; i < numPlayers; i++) {
+    public void genPlayers() {
+        if (this.numberOfPlayers >= MIN_NUM_PLAYERS || this.numberOfPlayers <= MAX_NUM_PLAYERS) {
+            for (int i = 0; i < this.numberOfPlayers; i++) {
                 ArrayList<Card> tempHand = new ArrayList<Card>();
                 tempHand.addAll(d.makeHand());
                 p = new Player(tempHand, i); //player numbers start at 0, player 0 is always human
@@ -59,7 +59,13 @@ public class Game {
             System.out.println("too many or too few players");
         }
     }
-
+    
+    public String getPlayerCardName(int playerIndex, int cardIndex){
+        String cardIconName = playerGroup.get(playerIndex).getCardName(cardIndex);
+        
+        return cardIconName;
+    }
+    
     public ArrayList playerHand(Player p){
         return p.handCardNames();
     }
@@ -72,7 +78,6 @@ public class Game {
     
     public void nextPlayer() {
         int nextPlayerPID;
-
         if (!reversed && !skipNext) {
             nextPlayerPID = this.currentPlayer + 1;
         } else if (reversed && !skipNext) {
@@ -92,7 +97,6 @@ public class Game {
         } else {
             nextPlayerPID = 0;
         }
-
         this.currentPlayer = nextPlayerPID;
 
     }
