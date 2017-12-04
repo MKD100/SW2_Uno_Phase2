@@ -51,6 +51,7 @@ public class Game {
         if (this.numberOfPlayers >= MIN_NUM_PLAYERS || this.numberOfPlayers <= MAX_NUM_PLAYERS) {
             for (int i = 0; i < this.numberOfPlayers; i++) {
                 ArrayList<Card> tempHand = new ArrayList<Card>();
+                tempHand.s
                 tempHand.addAll(d.makeHand());
                 p = new Player(tempHand, i); //player numbers start at 0, player 0 is always human
                 playerGroup.add(p);

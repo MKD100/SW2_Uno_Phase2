@@ -28,9 +28,10 @@ public class GameBoard extends javax.swing.JFrame {
     int numPlay;
     Boolean gameStarted = false;
     int p1CardIndex=0; 
+    
     public GameBoard() {
         initComponents();
-        selectButton.setVisible(false);
+        initGameBoard();
 
     }
     
@@ -51,7 +52,7 @@ public class GameBoard extends javax.swing.JFrame {
           c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+4) + " copy.png"))));
           c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+5) + " copy.png"))));
           c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+6) + " copy.png"))));
-          
+          p2NumCards.setText("Player 2 has: "+g.getPlayerHandSize(1));
     }
     
 
@@ -86,6 +87,7 @@ public class GameBoard extends javax.swing.JFrame {
         c6 = new javax.swing.JButton();
         c7 = new javax.swing.JButton();
         rightButton = new javax.swing.JButton();
+        p2NumCards = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -207,6 +209,8 @@ public class GameBoard extends javax.swing.JFrame {
             }
         });
 
+        p2NumCards.setText("jLabel1");
+
         javax.swing.GroupLayout rootPanelLayout = new javax.swing.GroupLayout(rootPanel);
         rootPanel.setLayout(rootPanelLayout);
         rootPanelLayout.setHorizontalGroup(
@@ -226,8 +230,13 @@ public class GameBoard extends javax.swing.JFrame {
             .addGroup(rootPanelLayout.createSequentialGroup()
                 .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(p2Name_Lable)
+                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(rootPanelLayout.createSequentialGroup()
+                                .addGap(213, 213, 213)
+                                .addComponent(p2Name_Lable))
+                            .addGroup(rootPanelLayout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(p2NumCards)))
                         .addGap(371, 371, 371)
                         .addComponent(deck)
                         .addGap(149, 149, 149)
@@ -293,7 +302,10 @@ public class GameBoard extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
                         .addGap(257, 257, 257)
                         .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(p2Name_Lable)
+                            .addGroup(rootPanelLayout.createSequentialGroup()
+                                .addComponent(p2Name_Lable)
+                                .addGap(73, 73, 73)
+                                .addComponent(p2NumCards))
                             .addGroup(rootPanelLayout.createSequentialGroup()
                                 .addComponent(p3Name_Lable)
                                 .addGap(236, 236, 236)
@@ -351,7 +363,7 @@ public class GameBoard extends javax.swing.JFrame {
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
         // TODO add your handling code here:
 
-        }
+        
     }//GEN-LAST:event_selectButtonActionPerformed
 
     private void deckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deckActionPerformed
@@ -443,7 +455,7 @@ public class GameBoard extends javax.swing.JFrame {
                 new GameBoard().setVisible(true);
             }
         });
-    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Start;
@@ -461,6 +473,7 @@ public class GameBoard extends javax.swing.JFrame {
     private javax.swing.JButton helpButton;
     private javax.swing.JButton leftButton;
     private javax.swing.JLabel p2Name_Lable;
+    private javax.swing.JLabel p2NumCards;
     private javax.swing.JLabel p3Name_Lable;
     private javax.swing.JLabel p4Name_Lable;
     private javax.swing.JLabel playerNameLable;

@@ -83,6 +83,9 @@ public class Deck {
         shuffle();
         return c1;
     }
+    public void removeTopCard(){
+        a.remove(0);
+    }
 
     public void printAllCards() {
         for (int i = 0; i < a.size(); i++) {
