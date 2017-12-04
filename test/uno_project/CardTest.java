@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Alonzo Dominguez
+ * @
  */
 public class CardTest {
     
