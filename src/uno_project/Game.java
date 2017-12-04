@@ -6,6 +6,7 @@
 package uno_project;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * this class is for the came play Mechanics player order check if cars are
@@ -51,7 +52,7 @@ public class Game {
         if (this.numberOfPlayers >= MIN_NUM_PLAYERS || this.numberOfPlayers <= MAX_NUM_PLAYERS) {
             for (int i = 0; i < this.numberOfPlayers; i++) {
                 ArrayList<Card> tempHand = new ArrayList<Card>();
-                tempHand.s
+                Collections.sort(tempHand);
                 tempHand.addAll(d.makeHand());
                 p = new Player(tempHand, i); //player numbers start at 0, player 0 is always human
                 playerGroup.add(p);
@@ -137,20 +138,22 @@ public class Game {
     //this is what determines if a discard is valid and what actions should be taken
 
     public void draw() {
-        
-            playerGroup.get(0).drawCard(d.getCard());
+            playerGroup.get(currentPlayer).drawCard(d.getCard());
+            d.removeTopCard();
         
     }
     
     public void draw2() {
         for (int i = 0; i < 3; i++) {
             playerGroup.get(currentPlayer).drawCard(d.getCard());
+            d.removeTopCard();
         }
     }
 
     public void draw4() {
         for (int i = 0; i < 5; i++) {
             playerGroup.get(currentPlayer).drawCard(d.getCard());
+            d.removeTopCard();
         }
     }
 

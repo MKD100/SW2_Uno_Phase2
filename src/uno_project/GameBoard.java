@@ -21,7 +21,6 @@ public class GameBoard extends javax.swing.JFrame {
      * Creates new form GameBoard
      */
     
-
     
     Game g = new Game();
     String name;
@@ -30,9 +29,17 @@ public class GameBoard extends javax.swing.JFrame {
     int p1CardIndex=0; 
     
     public GameBoard() {
+        
+        initComponents();
+        
+
+    }
+      public GameBoard(int Diff, int numP, String pName) {
+        
         initComponents();
         initGameBoard();
-
+        this.numPlay=numP;
+        this.name = pName;
     }
     
     public void setName(String inName){
