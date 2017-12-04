@@ -63,9 +63,8 @@ public class Card implements Comparable<Card> {
         if (this.color == compareColor) {
             /* For Ascending order of values */
             return this.value - compareValue;
-        } /* For Ascending order of suits */ else {
+        } /* For Ascending order of colors */ else {
             return this.color - compareColor;
         }
     }
-
 }
