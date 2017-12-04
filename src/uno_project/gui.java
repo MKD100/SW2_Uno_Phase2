@@ -194,13 +194,13 @@ public class gui extends javax.swing.JFrame {
 
     private void numPlayersComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numPlayersComboBoxActionPerformed
         // TODO add your handling code here:
-
-        
+        numOfPlayers = numPlayersComboBox.getSelectedIndex()+2;
+  
     }//GEN-LAST:event_numPlayersComboBoxActionPerformed
 
     private void difficultyComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difficultyComboBoxActionPerformed
         // TODO add your handling code here:
-        difficulty=0;
+        difficulty = difficultyComboBox.getSelectedIndex()+1;
     }//GEN-LAST:event_difficultyComboBoxActionPerformed
 
     private void infoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoIconMouseClicked

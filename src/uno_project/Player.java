@@ -6,6 +6,7 @@
 package uno_project;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -32,9 +33,6 @@ public class Player {
     public String getPlayerName(){
         return this.playerName;
     }
-    public int getPID() {
-        return this.pID;
-    }
 
     public String getCardName ( int cardIndex){
         String tempCard = hand.get(cardIndex).getImage();
@@ -48,6 +46,9 @@ public class Player {
         }
         return cardNames;
         
+    }
+    public void sortHand(){
+        Collections.sort(hand);
     }
     public int getHandSize(){
         return this.hand.size();
