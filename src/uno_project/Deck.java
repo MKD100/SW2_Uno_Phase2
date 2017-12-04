@@ -49,11 +49,13 @@ public class Deck {
         /*Populate the rest of the deck with
           2 of every card 1-9, skip, reverse, and addtwo*/
         for (int i = 0; i < 4; i++) {
-            for (int j = 1; j < 13; j++) {
-                Card c1 = new Card();
-                c1.setColor(i);
-                c1.setValue(j);
-                a.add(c1);
+            for(int s = 0; s < 2; s++){
+                for (int j = 1; j < 13; j++) {
+                    Card c1 = new Card();
+                    c1.setColor(i);
+                    c1.setValue(j);
+                    a.add(c1);
+                }
             }
         }
     }
