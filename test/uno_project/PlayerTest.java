@@ -11,10 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Alonzo Dominguez
- */
+
 public class PlayerTest {
     
     public PlayerTest() {
@@ -118,25 +115,13 @@ public class PlayerTest {
     @Test
     public void testDrawCard() {
         System.out.println("drawCard");
-        Card c = null;
-        Player instance = null;
+        Game g = new Game();
+        g.initializeGame(0);
+        Card c = g.topCard;
+        Player instance = g.playerGroup.get(0);
         instance.drawCard(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of size method, of class Player.
-     */
-    @Test
-    public void testSize() {
-        System.out.println("size");
-        Player instance = null;
-        int expResult = 0;
-        int result = instance.size();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(instance.hand.contains(c));
+        
     }
 
     /**
@@ -146,12 +131,14 @@ public class PlayerTest {
     public void testDiscard() {
         System.out.println("discard");
         int whichCard = 0;
-        Player instance = null;
-        Card expResult = null;
+        Game g = new Game();
+        g.initializeGame(0);
+        Player instance = g.playerGroup.get(0);
+        Card expResult = instance.hand.get(0);
         Card result = instance.discard(whichCard);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }

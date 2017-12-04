@@ -11,10 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Alonzo Dominguez
- */
+
 public class DeckTest {
     
     public DeckTest() {

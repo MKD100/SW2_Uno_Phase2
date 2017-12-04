@@ -58,9 +58,7 @@ public class Player {
         this.hand.add(c);
         this.numCards++;
     }
-    public int size(){
-        return this.numCards;
-    }
+
     public Card discard(int whichCard) {
         Card dCard = hand.get(whichCard);
         if (this.hand.size() == 1) {
