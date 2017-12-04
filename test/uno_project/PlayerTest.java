@@ -12,6 +12,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
+
 public class PlayerTest {
     
     public PlayerTest() {
@@ -89,9 +90,10 @@ public class PlayerTest {
         }
         p.sortHand();
         for (int i=0; i<hand.size(); i++){
-            //
+            if(p.getCardName(i).compareTo(p2.getCardName(i)) != 0);
+                x++;
         }
-            
+        assertNotEquals(x,1);    
         // TODO review the generated test code and remove the default call to fail.
     }
 
@@ -101,12 +103,15 @@ public class PlayerTest {
     @Test
     public void testGetHandSize() {
         System.out.println("getHandSize");
-        Player instance = null;
-        int expResult = 0;
-        int result = instance.getHandSize();
+        ArrayList<Card> hand = new ArrayList<Card>();
+        Player p = new Player(hand,0);
+        for (int i=0; i<7; i++){
+            Card c = new Card(0,i);
+            p.drawCard(c);
+        int expResult = 1;
+        int result = p.size();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        }
     }
 
     /**
