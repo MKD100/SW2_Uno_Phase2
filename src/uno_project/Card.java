@@ -52,7 +52,7 @@ public class Card implements Comparable<Card> {
     }
 
     public String getImage() {
-        return ("/images" + "/" + Integer.toString(this.color) + ".png");
+        return (this.toString() + " copy.png");
     }
 
     @Override

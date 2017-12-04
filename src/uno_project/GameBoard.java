@@ -21,25 +21,29 @@ public class GameBoard extends javax.swing.JFrame {
      * Creates new form GameBoard
      */
     
-    
+   
     Game g = new Game();
     String name;
     int numPlay;
     Boolean gameStarted = false;
     int p1CardIndex=0; 
     
+    
     public GameBoard() {
         
         initComponents();
+        initGameBoard();
         
 
     }
-      public GameBoard(int Diff, int numP, String pName) {
+    public GameBoard(int Diff, int numP, String pName) {
         
         initComponents();
         initGameBoard();
         this.numPlay=numP;
         this.name = pName;
+        
+        
     }
     
     public void setName(String inName){
@@ -52,13 +56,13 @@ public class GameBoard extends javax.swing.JFrame {
     
     private void initGameBoard(){
           g.initializeGame(numPlay);
-          c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex) + " copy.png"))));
-          c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+1) + " copy.png"))));
-          c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+2) + " copy.png"))));
-          c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+3) + " copy.png"))));
-          c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+4) + " copy.png"))));
-          c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+5) + " copy.png"))));
-          c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+6) + " copy.png"))));
+          c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex) ))));
+          c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+1) ))));
+          c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+2) ))));
+          c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+3) ))));
+          c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+4) ))));
+          c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+5) ))));
+          c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+6) ))));
           p2NumCards.setText("Player 2 has: "+g.getPlayerHandSize(1));
     }
     
@@ -100,12 +104,12 @@ public class GameBoard extends javax.swing.JFrame {
 
         rootPanel.setBackground(new java.awt.Color(190, 0, 0));
 
-        helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/information.png"))); // NOI18N
+        helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/button_Images/information.png"))); // NOI18N
         helpButton.setToolTipText("");
         helpButton.setBorderPainted(false);
         helpButton.setContentAreaFilled(false);
 
-        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/exit.png"))); // NOI18N
+        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/button_Images/exit.png"))); // NOI18N
         exitButton.setBorderPainted(false);
         exitButton.setContentAreaFilled(false);
         exitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +118,7 @@ public class GameBoard extends javax.swing.JFrame {
             }
         });
 
-        unoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/unoaids.PNG"))); // NOI18N
+        unoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/button_Images/unoaids.PNG"))); // NOI18N
         unoButton.setBorderPainted(false);
         unoButton.setContentAreaFilled(false);
         unoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -336,7 +340,7 @@ public class GameBoard extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(leftButton))
                     .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(selectButton)
                 .addGap(50, 50, 50))
         );

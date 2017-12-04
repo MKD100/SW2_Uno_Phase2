@@ -127,7 +127,7 @@ public class CardTest {
         d.sort();
         Card c1 = new Card();
         c1 = d.getCard(0);
-        String expResult = "/images/RedZero.png";
+        String expResult = "/images/RedZero copy.png";
         String result = c1.getImage();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
