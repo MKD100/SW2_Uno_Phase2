@@ -76,11 +76,11 @@ public class Deck {
         Collections.shuffle(this.a);
     }
 
-    public Card getCard() {
+    public Card getCard(int i ) {
         Card c1 = new Card();
-        c1 = a.get(0);
-        a.remove(0);
-        shuffle();
+        c1 = a.get(i);
+//        a.remove(0);
+        //shuffle();
         return c1;
     }
     public void removeTopCard(){
