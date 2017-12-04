@@ -127,7 +127,7 @@ public class CardTest {
         d.sort();
         Card c1 = new Card();
         c1 = d.getCard(0);
-        String expResult = "/images/RedZero copy.png";
+        String expResult = "RedZero copy.png";
         String result = c1.getImage();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -139,13 +139,13 @@ public class CardTest {
     @Test
     public void testCompareTo() {
         System.out.println("compareTo");
-        Card compareCard = null;
-        Card instance = new Card();
-        int expResult = 0;
-        int result = instance.compareTo(compareCard);
-        assertEquals(expResult, result);
+        Deck d = new Deck();
+        d.makeDeck();
+        Card c1 = d.getCard(0);
+        Card c2 = d.getCard(40);
+        int result = c1.compareTo(c2);
+        assertNotEquals(0, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
