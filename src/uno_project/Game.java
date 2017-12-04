@@ -36,7 +36,7 @@ public class Game {
         
     }
     public String getTopCard(){
-        return this.topCard.toString();
+        return this.topCard.getImage();
     }
     public void initializeGame(int pNum) {
         
@@ -47,6 +47,14 @@ public class Game {
         genPlayers();
         this.topCard = this.d.getCard(0);
         this.d.removeTopCard();
+        this.d.removeTopCard();
+        if(this.topCard.getColor()==4){
+            while(this.topCard.getColor()==4){
+                this.topCard = this.d.getCard(0);
+                this.d.removeTopCard();
+            }
+        }
+        
     }
 
     public void genPlayers() {
@@ -102,7 +110,23 @@ public class Game {
             nextPlayerPID = 0;
         }
         this.currentPlayer = nextPlayerPID;
+        if(nextPlayerPID>0){
+            this.aiPlayer();
+        }
 
+    }
+    public void aiPlayer(){
+        Boolean foundColor=false;
+        Boolean foundNum = false;
+        for(int i = 0; i< this.playerGroup.get(this.currentPlayer).getHandSize();i++){
+            if(this.playerGroup.get(this.currentPlayer).hand.get(i).getColor() == this.topCard.getColor() && (!foundColor || !foundNum)){
+                this.playerGroup.get(this.currentPlayer).discard(i);
+                foundColor=true;
+            }else if(this.playerGroup.get(this.currentPlayer).hand.get(i).getValue()== this.topCard.getValue() && (!foundColor || !foundNum)){
+                this.playerGroup.get(this.currentPlayer).discard(i);
+                foundNum=true;
+            }
+        }
     }
 
     //this will control how a player plays their card, if the player is non-human
