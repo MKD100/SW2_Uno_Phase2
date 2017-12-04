@@ -184,7 +184,7 @@ public class gui extends javax.swing.JFrame {
             playerName="Mr. No Name";
         }
         GameBoard gb = new GameBoard(difficulty, numOfPlayers, playerName);
-        gb.setVisible(true);
+        //gb.setVisible(true);
 //        gb.setNumPlayer(this.numOfPlayers);
 //        gb.setName(this.playerName);
 //        

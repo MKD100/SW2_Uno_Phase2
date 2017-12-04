@@ -42,18 +42,20 @@ public class Game {
         
         this.d.makeDeck();
         this.d.shuffle();
-        this.numberOfPlayers = pNum;
+        this.numberOfPlayers = pNum+2;
 //this creates the number of players and gives each of them a hand
         genPlayers();
-        this.topCard = this.d.getCard();
+        this.topCard = this.d.getCard(0);
+        this.d.removeTopCard();
     }
 
     public void genPlayers() {
         if (this.numberOfPlayers >= MIN_NUM_PLAYERS || this.numberOfPlayers <= MAX_NUM_PLAYERS) {
             for (int i = 0; i < this.numberOfPlayers; i++) {
                 ArrayList<Card> tempHand = new ArrayList<Card>();
-                Collections.sort(tempHand);
+                
                 tempHand.addAll(d.makeHand());
+                Collections.sort(tempHand);
                 p = new Player(tempHand, i); //player numbers start at 0, player 0 is always human
                 playerGroup.add(p);
             }
@@ -138,21 +140,21 @@ public class Game {
     //this is what determines if a discard is valid and what actions should be taken
 
     public void draw() {
-            playerGroup.get(currentPlayer).drawCard(d.getCard());
+            playerGroup.get(currentPlayer).drawCard(d.getCard(0));
             d.removeTopCard();
         
     }
     
     public void draw2() {
         for (int i = 0; i < 3; i++) {
-            playerGroup.get(currentPlayer).drawCard(d.getCard());
+            playerGroup.get(currentPlayer).drawCard(d.getCard(0));
             d.removeTopCard();
         }
     }
 
     public void draw4() {
         for (int i = 0; i < 5; i++) {
-            playerGroup.get(currentPlayer).drawCard(d.getCard());
+            playerGroup.get(currentPlayer).drawCard(d.getCard(0));
             d.removeTopCard();
         }
     }
@@ -183,7 +185,7 @@ public class Game {
         }
         if(d.isEmpty()){
             for(int i =0; i<discard.getSize();i++){
-                d.addCard(discard.getCard());
+                d.addCard(discard.getCard(0));
             }
         }
     }
