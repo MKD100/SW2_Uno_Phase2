@@ -28,14 +28,13 @@ public class GameBoard extends javax.swing.JFrame {
     Boolean gameStarted = false;
     int p1CardIndex=0; 
     
-    
+
     public GameBoard() {
         
         initComponents();
         initGameBoard();
-        
-
     }
+
     public GameBoard(int Diff, int numP, String pName) {
         
         initComponents();
@@ -46,16 +45,12 @@ public class GameBoard extends javax.swing.JFrame {
         
     }
     
-    public void setName(String inName){
-        this.name=inName;
-    }
-    
-    public void setNumPlayer(int num){
-        this.numPlay=num;
-    }
+  
+
     
     private void initGameBoard(){
           g.initializeGame(numPlay);
+
           c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex) ))));
           c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+1) ))));
           c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+2) ))));
@@ -77,7 +72,6 @@ public class GameBoard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        choice = new javax.swing.ButtonGroup();
         rootPanel = new javax.swing.JPanel();
         helpButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
@@ -276,11 +270,15 @@ public class GameBoard extends javax.swing.JFrame {
                         .addComponent(c7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rightButton)))
+
+                .addContainerGap(112, Short.MAX_VALUE))
+
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(playerNameLable)
                 .addGap(834, 834, 834))
+
         );
         rootPanelLayout.setVerticalGroup(
             rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,6 +365,7 @@ public class GameBoard extends javax.swing.JFrame {
 
     private void deckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deckActionPerformed
         // TODO add your handling code here:
+
         g.playerGroup.get(g.currentPlayer).hand.add(g.d.getCard(0));
         g.d.removeTopCard();
         
@@ -468,7 +467,6 @@ public class GameBoard extends javax.swing.JFrame {
     private javax.swing.JButton c5;
     private javax.swing.JButton c6;
     private javax.swing.JButton c7;
-    private javax.swing.ButtonGroup choice;
     private javax.swing.JButton deck;
     private javax.swing.JLabel discardCard;
     private javax.swing.JButton exitButton;

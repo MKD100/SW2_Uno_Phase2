@@ -44,19 +44,9 @@ public class Game {
         this.d.shuffle();
         this.numberOfPlayers = pNum+2;
 //this creates the number of players and gives each of them a hand
-        genPlayers();
-        this.topCard = this.d.getCard(0);
-        this.d.removeTopCard();
-        this.d.removeTopCard();
-        if(this.topCard.getColor()==4){
-            while(this.topCard.getColor()==4){
-                this.topCard = this.d.getCard(0);
-                this.d.removeTopCard();
-            }
-        }
-        
+        this.genPlayers();
+        this.topCard = this.d.getCard();
     }
-
     public void genPlayers() {
         if (this.numberOfPlayers >= MIN_NUM_PLAYERS || this.numberOfPlayers <= MAX_NUM_PLAYERS) {
             for (int i = 0; i < this.numberOfPlayers; i++) {
