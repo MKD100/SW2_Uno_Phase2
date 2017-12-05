@@ -28,29 +28,35 @@ public class GameBoard extends javax.swing.JFrame {
     int numPlay;
     Boolean gameStarted = false;
     int p1CardIndex=0; 
+    
     public GameBoard() {
         initComponents();
-        selectButton.setVisible(false);
-
+        initGameBoard();
     }
-    
-    public void setName(String inName){
-        this.name=inName;
-    }
-    
-    public void setNumPlayer(int num){
+    public GameBoard(String n, int num) {
         this.numPlay=num;
-    }
+        this.name = n;
+        initComponents();
+        initGameBoard();
+
+    }    
+//    public void setName(String inName){
+//        this.name=inName;
+//    }
+//    
+//    public void setNumPlayer(int num){
+//        this.numPlay=num;
+//    }
     
     private void initGameBoard(){
           g.initializeGame(numPlay);
-          c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex) + " copy.png"))));
-          c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+1) + " copy.png"))));
-          c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+2) + " copy.png"))));
-          c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+3) + " copy.png"))));
-          c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+4) + " copy.png"))));
-          c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+5) + " copy.png"))));
-          c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+6) + " copy.png"))));
+          c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex)))));
+          c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+1)))));
+          c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+2)))));
+          c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+3)))));
+          c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+4)))));
+          c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+5)))));
+          c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+6)))));
           
     }
     
@@ -64,7 +70,6 @@ public class GameBoard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        choice = new javax.swing.ButtonGroup();
         rootPanel = new javax.swing.JPanel();
         helpButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
@@ -91,12 +96,12 @@ public class GameBoard extends javax.swing.JFrame {
 
         rootPanel.setBackground(new java.awt.Color(190, 0, 0));
 
-        helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/information.png"))); // NOI18N
+        helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/button_Images/information.png"))); // NOI18N
         helpButton.setToolTipText("");
         helpButton.setBorderPainted(false);
         helpButton.setContentAreaFilled(false);
 
-        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/exit.png"))); // NOI18N
+        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/button_Images/exit.png"))); // NOI18N
         exitButton.setBorderPainted(false);
         exitButton.setContentAreaFilled(false);
         exitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +110,7 @@ public class GameBoard extends javax.swing.JFrame {
             }
         });
 
-        unoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/unoaids.PNG"))); // NOI18N
+        unoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/button_Images/unoaids.PNG"))); // NOI18N
         unoButton.setBorderPainted(false);
         unoButton.setContentAreaFilled(false);
         unoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -270,7 +275,7 @@ public class GameBoard extends javax.swing.JFrame {
                         .addComponent(c7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rightButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         rootPanelLayout.setVerticalGroup(
             rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,7 +322,7 @@ public class GameBoard extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(leftButton))
                     .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(selectButton)
                 .addGap(50, 50, 50))
         );
@@ -351,11 +356,12 @@ public class GameBoard extends javax.swing.JFrame {
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
         // TODO add your handling code here:
 
-        }
+        
     }//GEN-LAST:event_selectButtonActionPerformed
 
     private void deckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deckActionPerformed
         // TODO add your handling code here:
+       
         
     }//GEN-LAST:event_deckActionPerformed
 
@@ -454,7 +460,6 @@ public class GameBoard extends javax.swing.JFrame {
     private javax.swing.JButton c5;
     private javax.swing.JButton c6;
     private javax.swing.JButton c7;
-    private javax.swing.ButtonGroup choice;
     private javax.swing.JButton deck;
     private javax.swing.JLabel discardCard;
     private javax.swing.JButton exitButton;

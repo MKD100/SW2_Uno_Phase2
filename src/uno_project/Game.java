@@ -43,7 +43,7 @@ public class Game {
         this.d.shuffle();
         this.numberOfPlayers = pNum;
 //this creates the number of players and gives each of them a hand
-        genPlayers();
+        this.genPlayers();
         this.topCard = this.d.getCard();
     }
 
