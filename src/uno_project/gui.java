@@ -15,16 +15,15 @@ public class gui extends javax.swing.JFrame {
      * Creates new form gui
      */
     
-    Game g = new Game();
+    Game gGui = new Game();
+    
     int numOfPlayers = 0;
     int difficulty;
     String playerName;
     public gui() {
         initComponents();
     }
-    public int getNumOfPlayers(){
-        return this.numOfPlayers;
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -185,24 +184,29 @@ public class gui extends javax.swing.JFrame {
         if(playerName.isEmpty()){
             playerName="Mr. No Name";
         }
-        GameBoard gb = new GameBoard(this.playerName, this.numOfPlayers);
+
+        GameBoard gb = new GameBoard(difficulty, numOfPlayers, playerName);
+        //gb.setVisible(true);
 //        gb.setNumPlayer(this.numOfPlayers);
 //        gb.setName(this.playerName);
-        
+//        
+
         gb.setVisible(true);
-        setVisible(false);        
+        this.setVisible(false);        
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void numPlayersComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numPlayersComboBoxActionPerformed
-        // TODO add your handling code here:
-            //this.numOfPlayers=this.numPlayersComboBox.getSelectedIndex()+2;
-            //this.numOfPlayers=4;
-        
+
+        numOfPlayers = numPlayersComboBox.getSelectedIndex()+2;
+  
+
     }//GEN-LAST:event_numPlayersComboBoxActionPerformed
 
     private void difficultyComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difficultyComboBoxActionPerformed
         // TODO add your handling code here:
+
         this.difficulty= this.difficultyComboBox.getSelectedIndex();
+
     }//GEN-LAST:event_difficultyComboBoxActionPerformed
 
     private void infoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoIconMouseClicked
@@ -215,6 +219,13 @@ public class gui extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitButtonMainMenuMouseClicked
 
+    public int getDifficulty(){
+        return difficulty;
+    }
+    public int getNumPlayers(){
+        return numOfPlayers;
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -49,11 +49,13 @@ public class Deck {
         /*Populate the rest of the deck with
           2 of every card 1-9, skip, reverse, and addtwo*/
         for (int i = 0; i < 4; i++) {
-            for (int j = 1; j < 13; j++) {
-                Card c1 = new Card();
-                c1.setColor(i);
-                c1.setValue(j);
-                a.add(c1);
+            for(int s = 0; s < 2; s++){
+                for (int j = 1; j < 13; j++) {
+                    Card c1 = new Card();
+                    c1.setColor(i);
+                    c1.setValue(j);
+                    a.add(c1);
+                }
             }
         }
     }
@@ -76,12 +78,15 @@ public class Deck {
         Collections.shuffle(this.a);
     }
 
-    public Card getCard() {
+    public Card getCard(int i ) {
         Card c1 = new Card();
-        c1 = a.get(0);
-        a.remove(0);
-        shuffle();
+        c1 = a.get(i);
+//        a.remove(0);
+        //shuffle();
         return c1;
+    }
+    public void removeTopCard(){
+        a.remove(0);
     }
 
     public void printAllCards() {
