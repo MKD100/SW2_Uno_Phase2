@@ -176,37 +176,31 @@ public class gui extends javax.swing.JFrame {
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
                 
-        //numOfPlayers=numPlayersComboBox.getSelectedIndex();
-        //this.numOfPlayers= numOfPlayers+2;
-        this.numOfPlayers=3;
+        numOfPlayers=numPlayersComboBox.getSelectedIndex();
+        this.numOfPlayers= numOfPlayers+2;
         //g.initializeGame(numOfPlayers);
         playerName= nameInput.getText();
         if(playerName.isEmpty()){
             playerName="Mr. No Name";
         }
-
         GameBoard gb = new GameBoard(difficulty, numOfPlayers, playerName);
         //gb.setVisible(true);
 //        gb.setNumPlayer(this.numOfPlayers);
 //        gb.setName(this.playerName);
 //        
-
         gb.setVisible(true);
         this.setVisible(false);        
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void numPlayersComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numPlayersComboBoxActionPerformed
-
+        // TODO add your handling code here:
         numOfPlayers = numPlayersComboBox.getSelectedIndex()+2;
   
-
     }//GEN-LAST:event_numPlayersComboBoxActionPerformed
 
     private void difficultyComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difficultyComboBoxActionPerformed
         // TODO add your handling code here:
-
-        this.difficulty= this.difficultyComboBox.getSelectedIndex();
-
+        difficulty = difficultyComboBox.getSelectedIndex()+1;
     }//GEN-LAST:event_difficultyComboBoxActionPerformed
 
     private void infoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoIconMouseClicked
