@@ -185,7 +185,7 @@ public class Game {
 
     public void discard(Card c) {
         if (topCard.getColor() == c.getColor() || topCard.getValue() == c.getValue()) {
-            topCard = c;
+            this.topCard = c;
             if (topCard.getValue() == 12 || topCard.getValue() == 14) {//current top card is a draw 2 or draw4 Wild card
                 //card the current player is putting down is NOT a draw 2 or draw4 Wild card
                 //Player draws cards and cannot discard
