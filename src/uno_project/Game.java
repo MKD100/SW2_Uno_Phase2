@@ -116,11 +116,12 @@ public class Game {
         }
         if(nextPlayerPID>0){
             this.aiPlayer();
+            this.nextPlayer();
         }
 
     }
     public void aiPlayer(){
-        Boolean foundColor=false;
+ /*       Boolean foundColor=false;
         Boolean foundNum = false;
         for(int i = 0; i< this.playerGroup.get(this.currentPlayer).getHandSize();i++){
             if(this.playerGroup.get(this.currentPlayer).hand.get(i).getColor() == this.topCard.getColor() && (!foundColor || !foundNum)){
@@ -131,9 +132,10 @@ public class Game {
                 foundNum=true;
             }
         }
-        if(!foundColor && !foundNum){
+       if(!foundColor && !foundNum){*/ 
             this.draw();
-        }
+            System.out.print("AI Player draw, number of cards"+ this.playerGroup.get(this.currentPlayer).getHandSize());
+     //   }
     }
 
     //this will control how a player plays their card, if the player is non-human
