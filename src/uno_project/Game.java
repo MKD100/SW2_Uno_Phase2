@@ -199,7 +199,8 @@ public class Game {
                 if (c.getValue() == 12 || c.getValue() == 14) {
                     nextPlayer();
                     if (c.getValue() == 12) {//draw 2
-
+                    //playerGroup.get(currentPlayer+1).draw2() double check for if last player number so it wraps around to player index 0 (human player)
+                    
                     }
                     if (c.getValue() == 14) {//draw 4
 
