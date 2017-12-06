@@ -109,7 +109,11 @@ public class Game {
         } else {
             nextPlayerPID = 0;
         }
-        this.currentPlayer = nextPlayerPID;
+        if(nextPlayerPID<=this.numberOfPlayers){
+            this.currentPlayer = nextPlayerPID;
+        }else{
+            this.currentPlayer = 0;
+        }
         if(nextPlayerPID>0){
             this.aiPlayer();
         }
@@ -126,6 +130,9 @@ public class Game {
                 this.playerGroup.get(this.currentPlayer).discard(i);
                 foundNum=true;
             }
+        }
+        if(!foundColor && !foundNum){
+            this.draw();
         }
     }
 
