@@ -61,6 +61,7 @@ public class Player {
 
     public Card discard(int whichCard) {
         Card dCard = hand.get(whichCard);
+        hand.remove(whichCard);
         if (this.hand.size() == 1) {
             this.atUno = true;
         }

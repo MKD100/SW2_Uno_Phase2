@@ -20,53 +20,48 @@ public class GameBoard extends javax.swing.JFrame {
     /**
      * Creates new form GameBoard
      */
-    
-   
     Game g = new Game();
     String name;
     int numPlay;
     Boolean gameStarted = false;
-    int p1CardIndex=0; 
-    
-    
+    int p1CardIndex = 0;
+
     public GameBoard() {
-        
+
         initComponents();
         initGameBoard();
-        
 
     }
+
     public GameBoard(int Diff, int numP, String pName) {
-        
+
         initComponents();
         initGameBoard();
-        this.numPlay=numP;
+        this.numPlay = numP;
         this.name = pName;
-        
-        
+
     }
-    
-    public void setName(String inName){
-        this.name=inName;
+
+    public void setName(String inName) {
+        this.name = inName;
     }
-    
-    public void setNumPlayer(int num){
-        this.numPlay=num;
+
+    public void setNumPlayer(int num) {
+        this.numPlay = num;
     }
-    
-    private void initGameBoard(){
-          g.initializeGame(numPlay);
-          c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex) ))));
-          c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+1) ))));
-          c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+2) ))));
-          c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+3) ))));
-          c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+4) ))));
-          c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+5) ))));
-          c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0,p1CardIndex+6) ))));
-          discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
-          p2NumCards.setText("Player 2 has: "+g.getPlayerHandSize(1));
+
+    private void initGameBoard() {
+        g.initializeGame(numPlay);
+        c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
+        c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
+        c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
+        c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 3)))));
+        c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
+        c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
+        c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
+        p2NumCards.setText("Player 2 has: " + g.getPlayerHandSize(1));
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,7 +83,6 @@ public class GameBoard extends javax.swing.JFrame {
         p2Name_Lable = new javax.swing.JLabel();
         p3Name_Lable = new javax.swing.JLabel();
         p4Name_Lable = new javax.swing.JLabel();
-        deck = new javax.swing.JButton();
         leftButton = new javax.swing.JButton();
         c1 = new javax.swing.JButton();
         c2 = new javax.swing.JButton();
@@ -99,6 +93,7 @@ public class GameBoard extends javax.swing.JFrame {
         c7 = new javax.swing.JButton();
         rightButton = new javax.swing.JButton();
         p2NumCards = new javax.swing.JLabel();
+        drawPile = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,16 +134,6 @@ public class GameBoard extends javax.swing.JFrame {
         playerNameLable.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         playerNameLable.setForeground(new java.awt.Color(255, 255, 255));
         playerNameLable.setText("Player 1: ");
-
-        deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
-        deck.setToolTipText("");
-        deck.setBorderPainted(false);
-        deck.setContentAreaFilled(false);
-        deck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deckActionPerformed(evt);
-            }
-        });
 
         leftButton.setText("Left");
         leftButton.addActionListener(new java.awt.event.ActionListener() {
@@ -215,6 +200,13 @@ public class GameBoard extends javax.swing.JFrame {
 
         p2NumCards.setText("jLabel1");
 
+        drawPile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
+        drawPile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drawPileActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout rootPanelLayout = new javax.swing.GroupLayout(rootPanel);
         rootPanel.setLayout(rootPanelLayout);
         rootPanelLayout.setHorizontalGroup(
@@ -234,16 +226,17 @@ public class GameBoard extends javax.swing.JFrame {
             .addGroup(rootPanelLayout.createSequentialGroup()
                 .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(rootPanelLayout.createSequentialGroup()
                                 .addGap(213, 213, 213)
-                                .addComponent(p2Name_Lable))
+                                .addComponent(p2Name_Lable)
+                                .addGap(617, 617, 617))
                             .addGroup(rootPanelLayout.createSequentialGroup()
                                 .addGap(69, 69, 69)
-                                .addComponent(p2NumCards)))
-                        .addGap(371, 371, 371)
-                        .addComponent(deck)
-                        .addGap(149, 149, 149)
+                                .addComponent(p2NumCards)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(drawPile, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(79, 79, 79)))
                         .addComponent(discardCard)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(p4Name_Lable))
@@ -295,11 +288,6 @@ public class GameBoard extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(helpButton)))
                 .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addGap(305, 305, 305)
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deck)
-                            .addComponent(discardCard)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
                         .addGap(257, 257, 257)
                         .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,8 +300,14 @@ public class GameBoard extends javax.swing.JFrame {
                                 .addGap(236, 236, 236)
                                 .addComponent(p4Name_Lable)))
                         .addGap(79, 79, 79)
-                        .addComponent(playerNameLable)))
-                .addGap(18, 18, 18)
+                        .addComponent(playerNameLable)
+                        .addGap(18, 18, 18))
+                    .addGroup(rootPanelLayout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(drawPile)
+                            .addComponent(discardCard))
+                        .addGap(190, 190, 190)))
                 .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(c7, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(c6, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -348,7 +342,7 @@ public class GameBoard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        System.exit(0);        
+        System.exit(0);
         // Kills app        
     }//GEN-LAST:event_exitButtonActionPerformed
 
@@ -362,68 +356,272 @@ public class GameBoard extends javax.swing.JFrame {
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
         // TODO add your handling code here:
 
-        
-    }//GEN-LAST:event_selectButtonActionPerformed
 
-    private void deckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deckActionPerformed
-        // TODO add your handling code here:
-        g.playerGroup.get(g.currentPlayer).hand.add(g.d.getCard(0));
-        g.d.removeTopCard();
-        
-    }//GEN-LAST:event_deckActionPerformed
+    }//GEN-LAST:event_selectButtonActionPerformed
 
     private void c1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c1ActionPerformed
         // TODO add your handling code here:
-        g.playerGroup.get(0).discard(p1CardIndex);
+        g.discard(g.playerGroup.get(0).discard(p1CardIndex));
+        if (g.playerGroup.get(0).getHandSize() >= 1) {
+            c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 2) {
+            c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 3) {
+            c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 4) {
+            c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 3)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 5) {
+            c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 6) {
+            c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 7) {
+            c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        }
+        discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
+        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
     }//GEN-LAST:event_c1ActionPerformed
 
     private void c2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c2ActionPerformed
         // TODO add your handling code here:
-        g.playerGroup.get(0).discard(p1CardIndex+1);
+        g.discard(g.playerGroup.get(0).discard(p1CardIndex + 1));
+        if (g.playerGroup.get(0).getHandSize() >= 1) {
+            c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 2) {
+            c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 3) {
+            c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 4) {
+            c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 3)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 5) {
+            c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 6) {
+            c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 7) {
+            c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        }
+        discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
+        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
     }//GEN-LAST:event_c2ActionPerformed
 
     private void c3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c3ActionPerformed
         // TODO add your handling code here:
-        g.playerGroup.get(0).discard(p1CardIndex+2);
+        g.discard(g.playerGroup.get(0).discard(p1CardIndex + 2));
+        if (g.playerGroup.get(0).getHandSize() >= 1) {
+            c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 2) {
+            c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 3) {
+            c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 4) {
+            c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 3)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 5) {
+            c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 6) {
+            c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 7) {
+            c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        }
+        discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
+        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
     }//GEN-LAST:event_c3ActionPerformed
 
     private void c4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c4ActionPerformed
         // TODO add your handling code here:
-        g.playerGroup.get(0).discard(p1CardIndex+3);
+        g.discard(g.playerGroup.get(0).discard(p1CardIndex + 3));
+        if (g.playerGroup.get(0).getHandSize() >= 1) {
+            c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 2) {
+            c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 3) {
+            c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 4) {
+            c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 3)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 5) {
+            c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 6) {
+            c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 7) {
+            c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        }
+        discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
+        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
     }//GEN-LAST:event_c4ActionPerformed
 
     private void c5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c5ActionPerformed
         // TODO add your handling code here:
-        g.playerGroup.get(0).discard(p1CardIndex+4);
+        g.discard(g.playerGroup.get(0).discard(p1CardIndex + 4));
+        if (g.playerGroup.get(0).getHandSize() >= 1) {
+            c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 2) {
+            c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 3) {
+            c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 4) {
+            c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 3)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 5) {
+            c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 6) {
+            c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 7) {
+            c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        }
+        discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
+        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
     }//GEN-LAST:event_c5ActionPerformed
 
     private void c6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c6ActionPerformed
         // TODO add your handling code here:
-        g.playerGroup.get(0).discard(p1CardIndex+5);
+        g.discard(g.playerGroup.get(0).discard(p1CardIndex + 5));
+        if (g.playerGroup.get(0).getHandSize() >= 1) {
+            c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 2) {
+            c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 3) {
+            c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 4) {
+            c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 3)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 5) {
+            c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 6) {
+            c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 7) {
+            c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        }
+        discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
+        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
     }//GEN-LAST:event_c6ActionPerformed
 
     private void c7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c7ActionPerformed
         // TODO add your handling code here:
-        g.playerGroup.get(0).discard(p1CardIndex+6);
+        g.discard(g.playerGroup.get(0).discard(p1CardIndex + 6));
+        if (g.playerGroup.get(0).getHandSize() >= 1) {
+            c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 2) {
+            c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 3) {
+            c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 4) {
+            c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 3)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 5) {
+            c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 6) {
+            c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 7) {
+            c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        }
+        discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
+        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
     }//GEN-LAST:event_c7ActionPerformed
 
     private void leftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftButtonActionPerformed
         // TODO add your handling code here:
-        p1CardIndex+=7;
-        
+        if (p1CardIndex < g.playerGroup.get(0).getHandSize()) {
+            p1CardIndex++;
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 1) {
+            c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 2) {
+            c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 3) {
+            c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 4) {
+            c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 3)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 5) {
+            c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 6) {
+            c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 7) {
+            c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        }
     }//GEN-LAST:event_leftButtonActionPerformed
 
     private void rightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightButtonActionPerformed
         // TODO add your handling code here:
-        p1CardIndex-=7;
+        if (p1CardIndex > 0) {
+            p1CardIndex--;
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 1) {
+            c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 2) {
+            c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 3) {
+            c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 4) {
+            c4.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 3)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 5) {
+            c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 6) {
+            c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
+        }
+        if (g.playerGroup.get(0).getHandSize() >= 7) {
+            c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        }
     }//GEN-LAST:event_rightButtonActionPerformed
+
+    private void drawPileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawPileActionPerformed
+        // TODO add your handling code here:
+        g.draw();
+    }//GEN-LAST:event_drawPileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,7 +656,7 @@ public class GameBoard extends javax.swing.JFrame {
                 new GameBoard().setVisible(true);
             }
         });
-}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton c1;
@@ -469,8 +667,8 @@ public class GameBoard extends javax.swing.JFrame {
     private javax.swing.JButton c6;
     private javax.swing.JButton c7;
     private javax.swing.ButtonGroup choice;
-    private javax.swing.JButton deck;
     private javax.swing.JLabel discardCard;
+    private javax.swing.JButton drawPile;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton helpButton;
     private javax.swing.JButton leftButton;

@@ -109,7 +109,11 @@ public class Game {
         } else {
             nextPlayerPID = 0;
         }
-        this.currentPlayer = nextPlayerPID;
+        if(nextPlayerPID<=this.numberOfPlayers){
+            this.currentPlayer = nextPlayerPID;
+        }else{
+            this.currentPlayer = 0;
+        }
         if(nextPlayerPID>0){
             this.aiPlayer();
         }
@@ -126,6 +130,9 @@ public class Game {
                 this.playerGroup.get(this.currentPlayer).discard(i);
                 foundNum=true;
             }
+        }
+        if(!foundColor && !foundNum){
+            this.draw();
         }
     }
 
@@ -185,7 +192,7 @@ public class Game {
 
     public void discard(Card c) {
         if (topCard.getColor() == c.getColor() || topCard.getValue() == c.getValue()) {
-            topCard = c;
+            this.topCard = c;
             if (topCard.getValue() == 12 || topCard.getValue() == 14) {//current top card is a draw 2 or draw4 Wild card
                 //card the current player is putting down is NOT a draw 2 or draw4 Wild card
                 //Player draws cards and cannot discard
