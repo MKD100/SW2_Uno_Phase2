@@ -52,6 +52,8 @@ public class GameBoard extends javax.swing.JFrame {
 
     private void initGameBoard() {
         g.initializeGame(numPlay);
+        p2NumCards.setText("Player 2 has: " + g.getPlayerHandSize(1));
+        playerNameLable.setText("Player 1: "+ this.name);
         c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
         c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
         c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
@@ -60,7 +62,7 @@ public class GameBoard extends javax.swing.JFrame {
         c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
         c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
         discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
-        p2NumCards.setText("Player 2 has: " + g.getPlayerHandSize(1));
+        
     }
 
     /**
@@ -92,8 +94,30 @@ public class GameBoard extends javax.swing.JFrame {
         c6 = new javax.swing.JButton();
         c7 = new javax.swing.JButton();
         rightButton = new javax.swing.JButton();
-        p2NumCards = new javax.swing.JLabel();
         drawPile = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        p2NumCards = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,14 +222,60 @@ public class GameBoard extends javax.swing.JFrame {
             }
         });
 
-        p2NumCards.setText("jLabel1");
-
         drawPile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
         drawPile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drawPileActionPerformed(evt);
             }
         });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCardLeft copy.png"))); // NOI18N
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/BackOfCard copy.png"))); // NOI18N
+
+        p2NumCards.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        p2NumCards.setForeground(new java.awt.Color(255, 255, 255));
+        p2NumCards.setText("Player 2");
 
         javax.swing.GroupLayout rootPanelLayout = new javax.swing.GroupLayout(rootPanel);
         rootPanel.setLayout(rootPanelLayout);
@@ -224,26 +294,65 @@ public class GameBoard extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(rootPanelLayout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel6))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(rootPanelLayout.createSequentialGroup()
-                                .addGap(213, 213, 213)
-                                .addComponent(p2Name_Lable)
-                                .addGap(617, 617, 617))
-                            .addGroup(rootPanelLayout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(p2NumCards)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(drawPile, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(79, 79, 79)))
-                        .addComponent(discardCard)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(p4Name_Lable))
+                        .addGap(392, 392, 392)
+                        .addComponent(playerNameLable))
                     .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addGap(776, 776, 776)
-                        .addComponent(p3Name_Lable)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(p2Name_Lable)
+                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(rootPanelLayout.createSequentialGroup()
+                                .addGap(465, 465, 465)
+                                .addComponent(drawPile, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(rootPanelLayout.createSequentialGroup()
+                                .addGap(258, 258, 258)
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel18)))
+                        .addGap(3, 3, 3)
+                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(discardCard)
+                            .addGroup(rootPanelLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel21)
+                                .addGap(127, 127, 127)
+                                .addComponent(p3Name_Lable))))
+                    .addGroup(rootPanelLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(p2NumCards)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 357, Short.MAX_VALUE)
+                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel14)
+                        .addComponent(jLabel13)
+                        .addComponent(jLabel12))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(p4Name_Lable)
                 .addGap(213, 213, 213))
             .addGroup(rootPanelLayout.createSequentialGroup()
                 .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,11 +378,7 @@ public class GameBoard extends javax.swing.JFrame {
                         .addComponent(c7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rightButton)))
-                .addContainerGap(279, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(playerNameLable)
-                .addGap(834, 834, 834))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         rootPanelLayout.setVerticalGroup(
             rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,26 +393,68 @@ public class GameBoard extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(helpButton)))
                 .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(rootPanelLayout.createSequentialGroup()
-                                .addComponent(p2Name_Lable)
-                                .addGap(73, 73, 73)
-                                .addComponent(p2NumCards))
-                            .addGroup(rootPanelLayout.createSequentialGroup()
-                                .addComponent(p3Name_Lable)
-                                .addGap(236, 236, 236)
-                                .addComponent(p4Name_Lable)))
-                        .addGap(79, 79, 79)
-                        .addComponent(playerNameLable)
-                        .addGap(18, 18, 18))
                     .addGroup(rootPanelLayout.createSequentialGroup()
-                        .addGap(305, 305, 305)
+                        .addGap(177, 177, 177)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(drawPile)
-                            .addComponent(discardCard))
-                        .addGap(190, 190, 190)))
+                            .addComponent(jLabel2)
+                            .addComponent(p2NumCards))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(rootPanelLayout.createSequentialGroup()
+                        .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel14))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rootPanelLayout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(rootPanelLayout.createSequentialGroup()
+                                        .addComponent(p3Name_Lable)
+                                        .addGap(236, 236, 236)
+                                        .addComponent(p4Name_Lable))
+                                    .addComponent(p2Name_Lable))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(rootPanelLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel22)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel18))
+                                .addGap(182, 182, 182)
+                                .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(drawPile)
+                                    .addComponent(discardCard))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(playerNameLable)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(rootPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(c7, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(c6, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,7 +532,7 @@ public class GameBoard extends javax.swing.JFrame {
         }
         discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
-        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
+        p2Name_Lable.setText(g.playerGroup.get(0).getHandSize()+" Cards in hand");
     }//GEN-LAST:event_c1ActionPerformed
 
     private void c2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c2ActionPerformed
@@ -414,7 +561,7 @@ public class GameBoard extends javax.swing.JFrame {
         }
         discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
-        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
+        p2Name_Lable.setText(g.playerGroup.get(0).getHandSize()+" Cards in hand");
     }//GEN-LAST:event_c2ActionPerformed
 
     private void c3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c3ActionPerformed
@@ -443,7 +590,7 @@ public class GameBoard extends javax.swing.JFrame {
         }
         discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
-        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
+        p2Name_Lable.setText(g.playerGroup.get(0).getHandSize()+" Cards in hand");
     }//GEN-LAST:event_c3ActionPerformed
 
     private void c4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c4ActionPerformed
@@ -472,7 +619,7 @@ public class GameBoard extends javax.swing.JFrame {
         }
         discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
-        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
+        p2Name_Lable.setText(g.playerGroup.get(0).getHandSize()+" Cards in hand");
     }//GEN-LAST:event_c4ActionPerformed
 
     private void c5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c5ActionPerformed
@@ -501,7 +648,7 @@ public class GameBoard extends javax.swing.JFrame {
         }
         discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
-        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
+        p2Name_Lable.setText(g.playerGroup.get(0).getHandSize()+" Cards in hand");
     }//GEN-LAST:event_c5ActionPerformed
 
     private void c6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c6ActionPerformed
@@ -530,7 +677,7 @@ public class GameBoard extends javax.swing.JFrame {
         }
         discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
-        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
+        p2Name_Lable.setText(g.playerGroup.get(0).getHandSize()+" Cards in hand");
     }//GEN-LAST:event_c6ActionPerformed
 
     private void c7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c7ActionPerformed
@@ -561,7 +708,7 @@ public class GameBoard extends javax.swing.JFrame {
         }
         discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         g.nextPlayer();
-        p2Name_Lable.setText("Number of cards: " + g.playerGroup.get(0).getHandSize());
+        p2Name_Lable.setText(g.playerGroup.get(0).getHandSize()+" Cards in hand");
     }//GEN-LAST:event_c7ActionPerformed
 
     private void leftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftButtonActionPerformed
@@ -673,6 +820,28 @@ public class GameBoard extends javax.swing.JFrame {
     private javax.swing.JButton drawPile;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton helpButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JButton leftButton;
     private javax.swing.JLabel p2Name_Lable;
     private javax.swing.JLabel p2NumCards;
