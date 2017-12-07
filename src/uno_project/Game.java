@@ -42,7 +42,7 @@ public class Game {
         
         this.d.makeDeck();
         this.d.shuffle();
-        this.numberOfPlayers = pNum+2;
+        this.numberOfPlayers = pNum;
 //this creates the number of players and gives each of them a hand
         genPlayers();
         this.topCard = this.d.getCard(0);
@@ -134,7 +134,8 @@ public class Game {
         }
        if(!foundColor && !foundNum){*/ 
             this.draw();
-            System.out.print("AI Player draw, number of cards"+ this.playerGroup.get(this.currentPlayer).getHandSize());
+            //ERROR IS HERE!!!!!!!!!!
+            System.out.println("AI Player draw\n current number of cards"+ this.playerGroup.get(this.currentPlayer).getHandSize()+"\nPlayer PID: "+this.currentPlayer);
      //   }
     }
 

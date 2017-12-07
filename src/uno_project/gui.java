@@ -175,26 +175,25 @@ public class gui extends javax.swing.JFrame {
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
-                
-        numOfPlayers=numPlayersComboBox.getSelectedIndex();
-        this.numOfPlayers= numOfPlayers+2;
+        if(numOfPlayers>0){
+            numOfPlayers=numPlayersComboBox.getSelectedIndex();
+        }else{
+            this.numOfPlayers=2;
+        }
+        
         //g.initializeGame(numOfPlayers);
         playerName= nameInput.getText();
         if(playerName.isEmpty()){
             playerName="Mr. No Name";
         }
-        GameBoard gb = new GameBoard(difficulty, numOfPlayers, playerName);
-        //gb.setVisible(true);
-//        gb.setNumPlayer(this.numOfPlayers);
-//        gb.setName(this.playerName);
-//        
+        GameBoard gb = new GameBoard(difficulty, numOfPlayers, playerName);        
         gb.setVisible(true);
         this.setVisible(false);        
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void numPlayersComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numPlayersComboBoxActionPerformed
         // TODO add your handling code here:
-        numOfPlayers = numPlayersComboBox.getSelectedIndex()+2;
+        numOfPlayers = numPlayersComboBox.getSelectedIndex();
   
     }//GEN-LAST:event_numPlayersComboBoxActionPerformed
 

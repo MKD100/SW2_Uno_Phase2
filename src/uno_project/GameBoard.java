@@ -42,18 +42,21 @@ public class GameBoard extends javax.swing.JFrame {
 
     }
 
-    public void setName(String inName) {
-        this.name = inName;
-    }
-
-    public void setNumPlayer(int num) {
-        this.numPlay = num;
-    }
+//    public void setName(String inName) {
+//        this.name = inName;
+//    }
+//
+//    public void setNumPlayer(int num) {
+//        this.numPlay = num;
+//    }
 
     private void initGameBoard() {
         g.initializeGame(numPlay);
         p2NumCards.setText("Player 2 has: " + g.getPlayerHandSize(1));
         playerNameLable.setText("Player 1: "+ this.name);
+        
+        showHand();
+        /*
         c1.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex)))));
         c2.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 1)))));
         c3.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 2)))));
@@ -61,6 +64,7 @@ public class GameBoard extends javax.swing.JFrame {
         c5.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 4)))));
         c6.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 5)))));
         c7.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getPlayerCardName(0, p1CardIndex + 6)))));
+        */
         discardCard.setIcon((new javax.swing.ImageIcon(getClass().getResource("/uno_project/images/card_Images/" + g.getTopCard()))));
         
     }
