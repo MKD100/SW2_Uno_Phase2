@@ -23,6 +23,7 @@ public class Player {
 
     public Player(ArrayList inHand, int playerNum) {
         this.hand.addAll(inHand);
+        this.numCards= 7;
         this.pID = playerNum;
     }
 

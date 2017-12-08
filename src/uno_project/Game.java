@@ -42,7 +42,7 @@ public class Game {
         
         this.d.makeDeck();
         this.d.shuffle();
-        this.numberOfPlayers = pNum+2;
+        this.numberOfPlayers = pNum;
 //this creates the number of players and gives each of them a hand
         genPlayers();
         this.topCard = this.d.getCard(0);
@@ -116,11 +116,12 @@ public class Game {
         }
         if(nextPlayerPID>0){
             this.aiPlayer();
+            this.nextPlayer();
         }
 
     }
     public void aiPlayer(){
-        Boolean foundColor=false;
+ /*       Boolean foundColor=false;
         Boolean foundNum = false;
         for(int i = 0; i< this.playerGroup.get(this.currentPlayer).getHandSize();i++){
             if(this.playerGroup.get(this.currentPlayer).hand.get(i).getColor() == this.topCard.getColor() && (!foundColor || !foundNum)){
@@ -131,9 +132,11 @@ public class Game {
                 foundNum=true;
             }
         }
-        if(!foundColor && !foundNum){
+       if(!foundColor && !foundNum){*/ 
             this.draw();
-        }
+            //ERROR IS HERE!!!!!!!!!!
+            System.out.println("AI Player draw\n current number of cards"+ this.playerGroup.get(this.currentPlayer).getHandSize()+"\nPlayer PID: "+this.currentPlayer);
+     //   }
     }
 
     //this will control how a player plays their card, if the player is non-human
